@@ -50,58 +50,28 @@ module i2s_transceiver(
     );
 
 reg [31:0] input_data_reg;
-wire [31:0] output_data_reg;
-// fifo signals
-reg write;
-reg read;
-wire fifo_empty;
-wire fifo_full;
+reg [31:0] output_data_reg;
 
-    sync_fifo #(32, 8) fifo (
-        .clk(s_clk),
-        .rst(rst),
-        .writeEnable(write),
-        .readEnable(read),
-        .readData(output_data_reg),
-        .writeData(input_data_reg),
-        .empty(fifo_empty),
-        .full(fifo_full)
-    );
+reg [4:0] counter;
 
-// reg previous_lr_state;
-reg [4:0] write_to_fifo_counter;
-reg [4:0] read_from_fifo_counter;
-assign tx_i2s_data = output_data_reg[read_from_fifo_counter];
+assign tx_i2s_data = output_data_reg[counter];
 
-    always @(negedge s_clk or posedge rst) begin
-        if(rst) begin
-            input_data_reg <= 32'h00000000;
-            read_from_fifo_counter <= 31;
+always @(posedge s_clk or posedge rst) begin
+    if(rst) begin
+        counter <= 0;
+        input_data_reg <= 0;
+        output_data_reg <= 0;
+    end
+    else if(s_clk) begin
+        input_data_reg[counter] <= rx_i2s_data;
+        if(counter < 31) begin
+            counter <= counter + 1;
         end
-        else if(~s_clk) begin
-            read_from_fifo_counter <= read_from_fifo_counter - 1;
-            input_data_reg[31:0] <= {input_data_reg[30:0], rx_i2s_data};
+        else begin
+            counter <= 0;
+            output_data_reg <= input_data_reg;
         end
     end
-
-    always @(posedge s_clk or posedge rst) begin
-        if(rst) begin
-            write <= 0;
-            read <= 0;
-            write_to_fifo_counter <= 0;
-        end
-        else if (s_clk) begin
-            write_to_fifo_counter <= write_to_fifo_counter + 1;
-
-            if (write_to_fifo_counter == 31) begin
-                write <= 1;
-                read <= 1;
-            end
-            else begin
-                write <= 0;
-                read <= 0;
-            end
-        end
-    end
+end
 
 endmodule

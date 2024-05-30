@@ -23,20 +23,27 @@
 module top(
     input CLK_IN,
     input [3:0] btns_4bits_tri_i,
-    inout [7:0] pmoda_rpi_gpio_tri_io
+    input rx_i2s_data,
+    output tx_i2s_data,
+    output s_clk_adc,
+    output s_clk_dac,
+    output m_clk_adc,
+    output m_clk_dac,
+    output lr_clk_adc,
+    output lr_clk_dac
     );
 
     i2s_transceiver i2s_rx_tx (
         .clk_main(CLK_IN),
         .rst(btns_4bits_tri_i[0]),
-        .rx_i2s_data(pmoda_rpi_gpio_tri_io[7]),
-        .tx_i2s_data(pmoda_rpi_gpio_tri_io[3]),
-        .m_clk(pmoda_rpi_gpio_tri_io[0]),
-        .lr_clk(pmoda_rpi_gpio_tri_io[1]),
-        .s_clk(pmoda_rpi_gpio_tri_io[2])
+        .rx_i2s_data(rx_i2s_data),
+        .tx_i2s_data(tx_i2s_data),
+        .m_clk(m_clk_dac),
+        .lr_clk(lr_clk_dac),
+        .s_clk(s_clk_dac)
     );
 
-    assign pmoda_rpi_gpio_tri_io[4] = pmoda_rpi_gpio_tri_io[0];
-    assign pmoda_rpi_gpio_tri_io[5] = pmoda_rpi_gpio_tri_io[1];
-    assign pmoda_rpi_gpio_tri_io[6] = pmoda_rpi_gpio_tri_io[2];
+    assign lr_clk_adc = lr_clk_dac;
+    assign m_clk_adc = m_clk_dac;
+    assign s_clk_adc = s_clk_dac;
 endmodule
