@@ -56,14 +56,12 @@ reg [4:0] counter;
 
 assign tx_i2s_data = output_data_reg[counter];
 
-always @(posedge s_clk or posedge rst) begin
+always @(negedge s_clk or posedge rst) begin
     if(rst) begin
         counter <= 0;
-        input_data_reg <= 0;
         output_data_reg <= 0;
     end
-    else if(s_clk) begin
-        input_data_reg[counter] <= rx_i2s_data;
+    else if(!s_clk) begin
         if(counter < 31) begin
             counter <= counter + 1;
         end
@@ -72,6 +70,14 @@ always @(posedge s_clk or posedge rst) begin
             output_data_reg <= input_data_reg;
         end
     end
+end
+
+always @(posedge s_clk or posedge rst) begin
+    if(rst) begin
+        input_data_reg <= 0;
+    end
+    else if(s_clk)
+        input_data_reg[counter] <= rx_i2s_data;
 end
 
 endmodule
