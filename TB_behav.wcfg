@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="5,385.999 ns"></ZoomStartTime>
+      <ZoomEndTime time="8,006.000 ns"></ZoomEndTime>
+      <Cursor1Time time="7,039.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="258"></NameColumnWidth>
+      <ValueColumnWidth column_width="94"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/TB/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/rx" type="logic">
+      <obj_property name="ElementShortName">rx</obj_property>
+      <obj_property name="ObjectShortName">rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/TB/tx_i2s_data" type="logic">
+      <obj_property name="ElementShortName">tx_i2s_data</obj_property>
+      <obj_property name="ObjectShortName">tx_i2s_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/m_clk" type="logic">
+      <obj_property name="ElementShortName">m_clk</obj_property>
+      <obj_property name="ObjectShortName">m_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/s_clk" type="logic">
+      <obj_property name="ElementShortName">s_clk</obj_property>
+      <obj_property name="ObjectShortName">s_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/lr_clk" type="logic">
+      <obj_property name="ElementShortName">lr_clk</obj_property>
+      <obj_property name="ObjectShortName">lr_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/TB/input_data_reg" type="array">
+      <obj_property name="ElementShortName">input_data_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">input_data_reg[31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/TB/output_data_reg" type="array">
+      <obj_property name="ElementShortName">output_data_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">output_data_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB/TB/counter" type="array">
+      <obj_property name="ElementShortName">counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>
