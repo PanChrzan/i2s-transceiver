@@ -30,7 +30,7 @@ module clk_divider
     output clk_divide
 );
 
-reg [7:0] counter;
+reg [11:0] counter;
 reg out_buf;
 
 assign clk_divide = out_buf;

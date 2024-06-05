@@ -22,7 +22,7 @@
 
 module top(
     input CLK_IN,
-    input [3:0] btns_4bits_tri_i,
+    input rst,
     input rx_i2s_data,
     output tx_i2s_data,
     output s_clk_adc,
@@ -33,17 +33,42 @@ module top(
     output lr_clk_dac
     );
 
-    i2s_transceiver i2s_rx_tx (
+    wire m_clk;     //master clock
+    wire s_clk;     //serial data clock
+    wire lr_clk;    //left-right clock
+
+    //gives 12.5 MHz
+    clk_divider #(5) MCLK ( 
         .clk_main(CLK_IN),
-        .rst(btns_4bits_tri_i[0]),
-        .rx_i2s_data(rx_i2s_data),
-        .tx_i2s_data(tx_i2s_data),
-        .m_clk(m_clk_dac),
-        .lr_clk(lr_clk_dac),
-        .s_clk(s_clk_dac)
+        .rst(rst),
+        .clk_divide(m_clk)
+    );
+    //gives 3.125 MHz
+    clk_divider #(20) SCLK (
+        .clk_main(CLK_IN),
+        .rst(rst),
+        .clk_divide(s_clk)
+    );
+    //gives arround 48 kHz
+    clk_divider #(1280) LRCLK (
+        .clk_main(CLK_IN),
+        .rst(rst),
+        .clk_divide(lr_clk)
     );
 
-    assign lr_clk_adc = lr_clk_dac;
-    assign m_clk_adc = m_clk_dac;
-    assign s_clk_adc = s_clk_dac;
+    i2s_transceiver i2s_rx_tx (
+        .clk_main(CLK_IN),
+        .rst(rst),
+        .rx_i2s_data(rx_i2s_data),
+        .tx_i2s_data(tx_i2s_data),
+        .s_clk(s_clk)
+    );
+
+    assign lr_clk_dac = lr_clk;
+    assign m_clk_dac = m_clk;
+    assign s_clk_dac = s_clk;
+
+    assign lr_clk_adc = lr_clk;
+    assign m_clk_adc = m_clk;
+    assign s_clk_adc = s_clk;
 endmodule
