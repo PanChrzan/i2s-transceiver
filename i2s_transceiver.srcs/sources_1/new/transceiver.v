@@ -21,32 +21,10 @@
 
 
 module i2s_transceiver(
-    input clk_main,
+    input s_clk,
     input rst,
     input rx_i2s_data,
-    output tx_i2s_data,
-    output wire m_clk,   //master clock
-    output wire lr_clk,  //left-right channel clock
-    output wire s_clk    //serial data clock
-    );
-    
-    //gives 12.5 MHz
-    clk_divider #(5) MCLK ( 
-        .clk_main(clk_main),
-        .rst(rst),
-        .clk_divide(m_clk)
-    );
-    //gives 3.125 MHz
-    clk_divider #(2) SCLK (
-        .clk_main(m_clk),
-        .rst(rst),
-        .clk_divide(s_clk)
-    );
-    //gives arround 48 kHz
-    clk_divider #(32) LRCLK (
-        .clk_main(s_clk),
-        .rst(rst),
-        .clk_divide(lr_clk)
+    output tx_i2s_data
     );
 
 reg [31:0] input_data_reg;

@@ -21,26 +21,33 @@
 
 
 module TB;
-    reg clk;
+    reg CLK_IN;
     reg rst;
-    reg rx;
-    wire m_clk;
-    wire s_clk;
-    wire lr_clk;
+    reg rx_i2s_data;
+    wire tx_i2s_data;
+    wire s_clk_adc;
+    wire s_clk_dac;
+    wire m_clk_adc;
+    wire m_clk_dac;
+    wire lr_clk_adc;
+    wire lr_clk_dac;
     
-    i2s_transceiver TB(
-    .clk_main(clk),
+    top TB(
+    .CLK_IN(CLK_IN),
     .rst(rst),
-//    .tx_i2s_data(),
-    .m_clk(m_clk),   //master clock
-    .s_clk(s_clk),   //serial data clock
-    .lr_clk(lr_clk), //left-right channel clock
-    .rx_i2s_data(rx)
+    .rx_i2s_data(rx_i2s_data),
+    .tx_i2s_data(tx_i2s_data),
+    .s_clk_adc(s_clk_adc),
+    .s_clk_dac(s_clk_dac),
+    .m_clk_adc(m_clk_adc),
+    .m_clk_dac(m_clk_dac),
+    .lr_clk_adc(lr_clk_adc),
+    .lr_clk_dac(lr_clk_dac)
     );
     
     initial begin
-        rx <= 0;
-        clk <= 0;
+        rx_i2s_data <= 0;
+        CLK_IN <= 0;
         rst <= 1;
         #10;
         rst <= 0;
@@ -49,9 +56,9 @@ module TB;
     end
     
     always begin
-        #1 clk <= ~clk;
+        #1 CLK_IN <= ~CLK_IN;
     end
-    always @(posedge s_clk) begin
-        rx <= $random % 2;
+    always @(posedge s_clk_adc) begin
+        rx_i2s_data <= $random % 2;
     end
 endmodule
