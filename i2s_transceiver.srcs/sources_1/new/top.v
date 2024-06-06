@@ -20,17 +20,25 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top(
-    input CLK_IN,
-    input rst,
-    input rx_i2s_data,
-    output tx_i2s_data,
-    output s_clk_adc,
-    output s_clk_dac,
-    output m_clk_adc,
-    output m_clk_dac,
-    output lr_clk_adc,
-    output lr_clk_dac
+module top
+    #(
+        /* 125 MHz input clock and MCLK_DIVISION = 5 gives:
+        MCLK = 12.5 MHz 
+        SCLK = 3.125 MHz
+        LRCLK = 48.8 kHz */
+        parameter MCLK_DIVISION = 5
+    )
+    (
+        input CLK_IN,
+        input rst,
+        input rx_i2s_data,
+        output tx_i2s_data,
+        output s_clk_adc,
+        output s_clk_dac,
+        output m_clk_adc,
+        output m_clk_dac,
+        output lr_clk_adc,
+        output lr_clk_dac
     );
 
     wire m_clk;     //master clock
@@ -38,19 +46,19 @@ module top(
     wire lr_clk;    //left-right clock
 
     //gives 12.5 MHz
-    clk_divider #(5) MCLK ( 
+    clk_divider #(MCLK_DIVISION) MCLK ( 
         .clk_main(CLK_IN),
         .rst(rst),
         .clk_divide(m_clk)
     );
     //gives 3.125 MHz
-    clk_divider #(20) SCLK (
+    clk_divider #(MCLK_DIVISION*4) SCLK (
         .clk_main(CLK_IN),
         .rst(rst),
         .clk_divide(s_clk)
     );
     //gives arround 48 kHz
-    clk_divider #(1280) LRCLK (
+    clk_divider #(MCLK_DIVISION*256) LRCLK (
         .clk_main(CLK_IN),
         .rst(rst),
         .clk_divide(lr_clk)
