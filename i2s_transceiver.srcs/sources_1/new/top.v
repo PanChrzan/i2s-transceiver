@@ -65,11 +65,11 @@ module top
     );
 
     i2s_transceiver i2s_rx_tx (
-        .clk_main(CLK_IN),
         .rst(rst),
         .rx_i2s_data(rx_i2s_data),
         .tx_i2s_data(tx_i2s_data),
-        .s_clk(s_clk)
+        .s_clk(s_clk),
+        .lr_clk(lr_clk)
     );
 
     assign lr_clk_dac = lr_clk;
