@@ -1,0 +1,306 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xDEFC97FF92D1F3A9",
+      "device": "xc7z020clg400-1",
+      "gen_directory": "../../../../i2s_transceiver.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "top_0": "",
+      "clk_wiz_0": ""
+    },
+    "ports": {
+      "rx_i2s_data": {
+        "direction": "I"
+      },
+      "lr_clk_adc": {
+        "direction": "O"
+      },
+      "m_clk_dac": {
+        "direction": "O"
+      },
+      "m_clk_adc": {
+        "direction": "O"
+      },
+      "s_clk_dac": {
+        "direction": "O"
+      },
+      "s_clk_adc": {
+        "direction": "O"
+      },
+      "tx_i2s_data": {
+        "direction": "O"
+      },
+      "lr_clk_dac": {
+        "direction": "O"
+      },
+      "rst": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "sys_clock": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_1_sys_clock",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "125000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0"
+          }
+        }
+      }
+    },
+    "components": {
+      "top_0": {
+        "vlnv": "xilinx.com:module_ref:top:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_top_0_0",
+        "xci_path": "ip\\design_1_top_0_0\\design_1_top_0_0.xci",
+        "inst_hier_path": "top_0",
+        "parameters": {
+          "MCLK_DIVISION": {
+            "value": "4"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "top",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "CLK_IN": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "rx_i2s_data": {
+            "direction": "I"
+          },
+          "tx_i2s_data": {
+            "direction": "O"
+          },
+          "s_clk_adc": {
+            "direction": "O"
+          },
+          "s_clk_dac": {
+            "direction": "O"
+          },
+          "m_clk_adc": {
+            "direction": "O"
+          },
+          "m_clk_dac": {
+            "direction": "O"
+          },
+          "lr_clk_adc": {
+            "direction": "O"
+          },
+          "lr_clk_dac": {
+            "direction": "O"
+          }
+        }
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "13",
+        "xci_name": "design_1_clk_wiz_0_1",
+        "xci_path": "ip\\design_1_clk_wiz_0_1\\design_1_clk_wiz_0_1.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "parameters": {
+          "CLKOUT1_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "237.312"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "249.865"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLK_IN1_BOARD_INTERFACE": {
+            "value": "sys_clock"
+          },
+          "ENABLE_CLOCK_MONITOR": {
+            "value": "false"
+          },
+          "FEEDBACK_SOURCE": {
+            "value": "FDBK_AUTO"
+          },
+          "MMCM_BANDWIDTH": {
+            "value": "OPTIMIZED"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "36"
+          },
+          "MMCM_CLKIN2_PERIOD": {
+            "value": "10.0"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "9"
+          },
+          "MMCM_COMPENSATION": {
+            "value": "ZHOLD"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "5"
+          },
+          "PRIMITIVE": {
+            "value": "PLL"
+          },
+          "RESET_PORT": {
+            "value": "reset"
+          },
+          "RESET_TYPE": {
+            "value": "ACTIVE_HIGH"
+          },
+          "SECONDARY_SOURCE": {
+            "value": "Single_ended_clock_capable_pin"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          },
+          "USE_FREQ_SYNTH": {
+            "value": "true"
+          },
+          "USE_PHASE_ALIGNMENT": {
+            "value": "true"
+          }
+        }
+      }
+    },
+    "nets": {
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "top_0/CLK_IN"
+        ]
+      },
+      "reset_rtl_1": {
+        "ports": [
+          "rst",
+          "top_0/rst",
+          "clk_wiz_0/reset"
+        ]
+      },
+      "rx_i2s_data_0_1": {
+        "ports": [
+          "rx_i2s_data",
+          "top_0/rx_i2s_data"
+        ]
+      },
+      "sys_clock_1": {
+        "ports": [
+          "sys_clock",
+          "clk_wiz_0/clk_in1"
+        ]
+      },
+      "top_0_lr_clk_adc": {
+        "ports": [
+          "top_0/lr_clk_adc",
+          "lr_clk_adc"
+        ]
+      },
+      "top_0_lr_clk_dac": {
+        "ports": [
+          "top_0/lr_clk_dac",
+          "lr_clk_dac"
+        ]
+      },
+      "top_0_m_clk_adc": {
+        "ports": [
+          "top_0/m_clk_adc",
+          "m_clk_adc"
+        ]
+      },
+      "top_0_m_clk_dac": {
+        "ports": [
+          "top_0/m_clk_dac",
+          "m_clk_dac"
+        ]
+      },
+      "top_0_s_clk_adc": {
+        "ports": [
+          "top_0/s_clk_adc",
+          "s_clk_adc"
+        ]
+      },
+      "top_0_s_clk_dac": {
+        "ports": [
+          "top_0/s_clk_dac",
+          "s_clk_dac"
+        ]
+      },
+      "top_0_tx_i2s_data": {
+        "ports": [
+          "top_0/tx_i2s_data",
+          "tx_i2s_data"
+        ]
+      }
+    }
+  }
+}

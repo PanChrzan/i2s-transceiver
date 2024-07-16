@@ -1,0 +1,39 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.25",
+   "Default View_TopLeft":"-181,-101",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port port-id_rx_i2s_data -pg 1 -lvl 0 -x -10 -y 140 -defaultsOSRD
+preplace port port-id_lr_clk_adc -pg 1 -lvl 3 -x 500 -y 180 -defaultsOSRD
+preplace port port-id_m_clk_dac -pg 1 -lvl 3 -x 500 -y 150 -defaultsOSRD
+preplace port port-id_m_clk_adc -pg 1 -lvl 3 -x 500 -y 120 -defaultsOSRD
+preplace port port-id_s_clk_dac -pg 1 -lvl 3 -x 500 -y 90 -defaultsOSRD
+preplace port port-id_s_clk_adc -pg 1 -lvl 3 -x 500 -y 60 -defaultsOSRD
+preplace port port-id_tx_i2s_data -pg 1 -lvl 3 -x 500 -y 30 -defaultsOSRD
+preplace port port-id_lr_clk_dac -pg 1 -lvl 3 -x 500 -y 210 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x -10 -y 110 -defaultsOSRD
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x -10 -y 60 -defaultsOSRD
+preplace inst top_0 -pg 1 -lvl 2 -x 340 -y 120 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 50 -defaultsOSRD
+preplace netloc clk_wiz_0_clk_out1 1 1 1 200 40n
+preplace netloc reset_rtl_1 1 0 2 20J 120 N
+preplace netloc rx_i2s_data_0_1 1 0 2 NJ 140 N
+preplace netloc top_0_lr_clk_adc 1 2 1 470J 160n
+preplace netloc top_0_lr_clk_dac 1 2 1 460J 180n
+preplace netloc top_0_m_clk_adc 1 2 1 NJ 120
+preplace netloc top_0_m_clk_dac 1 2 1 470J 140n
+preplace netloc top_0_s_clk_adc 1 2 1 470J 60n
+preplace netloc top_0_s_clk_dac 1 2 1 460J 90n
+preplace netloc top_0_tx_i2s_data 1 2 1 460J 30n
+preplace netloc sys_clock_1 1 0 1 N 60
+levelinfo -pg 1 -10 110 340 500
+pagesize -pg 1 -db -bbox -sgen -140 -20 630 360
+"
+}
+{
+   "da_board_cnt":"5",
+   "da_clkrst_cnt":"1",
+   "da_ps7_cnt":"1"
+}
