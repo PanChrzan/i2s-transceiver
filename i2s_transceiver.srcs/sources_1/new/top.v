@@ -64,12 +64,29 @@ module top
         .clk_divide(lr_clk)
     );
 
-    i2s_transceiver i2s_rx_tx (
+    wire data_valid;
+    wire [31:0] tx_i2s_data_reg;
+    wire [31:0] rx_i2s_data_reg;
+    wire [31:0] loop;
+
+    transceiver i2s_rx_tx (
+        .CLK_IN(CLK_IN),
         .rst(rst),
         .rx_i2s_data(rx_i2s_data),
         .tx_i2s_data(tx_i2s_data),
         .s_clk(s_clk),
-        .lr_clk(lr_clk)
+        .lr_clk(lr_clk),
+        .tx_i2s_data_reg(tx_i2s_data_reg),
+        .data_valid(data_valid),
+        .rx_i2s_data_reg(rx_i2s_data_reg)
+    );
+    
+    i2s_mem mem(
+        .CLK_IN(CLK_IN),
+        .rst(rst),
+        .data_valid(data_valid),
+        .i2s_rx_data(rx_i2s_data_reg),
+        .i2s_tx_data(tx_i2s_data_reg)
     );
 
     assign lr_clk_dac = lr_clk;
